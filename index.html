@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 100%;
+        }
+        .dice {
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            justify-content: center;
+            align-items: center;
+        }
+        p{
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            column-gap: 10%;
+        }
+        .winner{
+           width: 100%;
+           text-align: center;
+           margin-bottom: 10%;
+        }
+        body{
+            background-image: url('./2.jpg') ;
+            background-repeat: no-repeat;
+            width: 100%;
+        }
+        p,h1{
+            color: yellow;
+            font-size: 50px;
+            font-weight: 100;
+        }
+       button{
+        margin-top: 12px;
+        width: 70%;
+        height: 30px;
+        border-radius: 30px;
+       }
+    </style>
+</head>
+
+<body>
+    
+    <h1 class="winner">Xí ngầu vui vẻ</h1>
+    <div class="container">
+
+
+        <div class="dice">
+            <p id="player1">Player 1</p>
+            <img id="img1" src="dice1.png" alt="">
+            <button onclick="rollTheDice()">roll</button>
+        </div>
+        <div class="dice">
+            <p id="player2">Player 2</p>
+            <img id="img2" src="dice1.png" alt="">
+            <button onclick="editName()">edit name</button>
+        </div>
+        
+    </div>
+    
+    
+    
+    
+    <script>
+        var player1 = "player1"
+        var player2 = "player2"
+        function editName() {
+            player1 = prompt('Nhập tên player1')
+            player2 = prompt('Nhập tên player2')
+            document.getElementById('player1').innerText = player1
+            document.getElementById('player2').innerText = player2
+        }
+        function rollTheDice() {
+            if(player1 == 'player1' && player2 == 'player2'){
+                alert('Nhập tên trước khi chơi nhá !!!')
+                editName()
+            }
+            else{
+                dice1 = document.getElementById('img1')
+                dice2 = document.getElementById('img2')
+
+                dice1.setAttribute('src', 'diceroll.gif')
+                dice2.setAttribute('src', 'diceroll.gif')
+
+                var result = document.querySelector('h1')
+                result.innerHTML = ""
+                setTimeout(function roll() {
+                    let randomimg1 = Math.floor(Math.random() * 6) + 1
+                    let randomimg2 = Math.floor(Math.random() * 6) + 1
+                    dice1.setAttribute('src', 'dice' + randomimg1 + '.png')
+                    dice2.setAttribute('src', 'dice' + randomimg2 + '.png')
+                    if (randomimg1 < randomimg2)
+                        result.innerHTML = (player2 + " WINS!");
+                    else if (randomimg1 > randomimg2)
+                        result.innerHTML = (player1 + " WINS!");
+                    else result.innerHTML = (player1 + " hoa " + player2);
+                }, 1000)
+            }
+        }
+    </script>
+</body>
+
+</html>
