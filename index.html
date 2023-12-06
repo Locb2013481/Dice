@@ -59,12 +59,12 @@
         <div class="dice">
             <p id="player1">Player 1</p>
             <img id="img1" src="dice1.png" alt="">
-            <button onclick="rollTheDice()">roll</button>
+            <button onclick="rollTheDice()">Roll</button>
         </div>
         <div class="dice">
             <p id="player2">Player 2</p>
             <img id="img2" src="dice1.png" alt="">
-            <button onclick="editName()">edit name</button>
+            <button onclick="editName()">Edit name</button>
         </div>
         
     </div>
@@ -76,8 +76,8 @@
         var player1 = "player1"
         var player2 = "player2"
         function editName() {
-            player1 = prompt('Nhập tên player1')
-            player2 = prompt('Nhập tên player2')
+            player1 = prompt('Enter name player1')
+            player2 = prompt('Enter name player2')
             document.getElementById('player1').innerText = player1
             document.getElementById('player2').innerText = player2
         }
@@ -101,10 +101,10 @@
                     dice1.setAttribute('src', 'dice' + randomimg1 + '.png')
                     dice2.setAttribute('src', 'dice' + randomimg2 + '.png')
                     if (randomimg1 < randomimg2)
-                        result.innerHTML = (player2 + " WINS!");
+                        result.innerHTML = (player2 + " win!");
                     else if (randomimg1 > randomimg2)
-                        result.innerHTML = (player1 + " WINS!");
-                    else result.innerHTML = (player1 + " hoa " + player2);
+                        result.innerHTML = (player1 + " win!");
+                    else result.innerHTML = (player1 + " Ties " + player2);
                 }, 1000)
             }
         }
